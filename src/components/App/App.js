@@ -7,6 +7,10 @@ class App extends Component {
     return (
       <div>
         <h1>Giphy Search!</h1>
+        <input type="text"></input>
+        <button>Search for a new GIF</button>
+
+        
       </div>
     );
   }
