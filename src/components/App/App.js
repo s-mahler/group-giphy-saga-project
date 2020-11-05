@@ -15,8 +15,6 @@ class App extends Component {
             <Route exact path= "/search" component ={Search}/>
             <Route path="/favorites" component ={Favorite}/>
             <h1>Giphy Search!</h1>
-            <input type="text"></input>
-            <button>Search for a new GIF</button>
           </div>
       </Router>
  
