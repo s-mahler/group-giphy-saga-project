@@ -21,9 +21,9 @@ function* watcherSaga() {
     yield takeEvery('FETCH_GIFS', fetchGifs)
 }
 
-function* fetchGifs() {
+function* fetchGifs(action) {
     try {
-      const gifsResponse = yield axios.get('/api/favorite');
+      const gifsResponse = yield axios.get('/api/search', action.payload);
       console.log(gifsResponse.data);
       yield put({type: 'SET_GIF', payload: gifsResponse.data});
     } catch (error) {
