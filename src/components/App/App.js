@@ -6,9 +6,6 @@ import Search from '../Search/Search';
 
 class App extends Component {
 
-  getGifs = () => {
-    this.props.dispatch({type: 'FETCH_GIFS'});
-  }
 
   render() {
     return (
