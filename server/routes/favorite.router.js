@@ -4,16 +4,6 @@ const pool = require('../modules/pool');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  axios.get(`https://api.giphy.com/v1/gifs/search?api_key=${KEY_GIPHY}&q=${SEARCH_GOES_HERE}&limit=25&offset=0&rating=g&lang=en`)
-  .then((response) => {
-      console.log(response.data);
-      res.send(response.data);
-  }).catch((error) => {
-      alert(error);
-      res.sendStatus(500);
-  })
-})
 
 // return all favorite images
 router.get('/', (req, res) => {

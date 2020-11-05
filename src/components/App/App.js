@@ -6,16 +6,12 @@ import Search from '../Search/Search';
 
 class App extends Component {
 
-  getGifs = () => {
-    this.props.dispatch({type: 'FETCH_GIFS'});
-  }
 
   render() {
     return (
 
       <Router>
           <div>
-            <h1>Giphy Search!</h1>
             <Route exact path= "/search" component ={Search}/>
             <Route path="/favorites" component ={Favorite}/>
             <h1>Giphy Search!</h1>
