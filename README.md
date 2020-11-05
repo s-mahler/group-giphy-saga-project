@@ -10,22 +10,21 @@ Do not clone this repository. Instead, have one person use the template and make
 
 ## Create Database and Tables
 
-See the `database.sql` file for database setup and details. It offers some of the SQL to get you started but you'll need to set up your tables and the relationships between them. 
+[x]See the `database.sql` file for database setup and details. It offers some of the SQL to get you started but you'll need to set up your tables and the relationships between them. 
 
 
 ## Development Setup Instructions
 
-* Run `npm install`
-* Start postgres if not running already by using `brew services start postgresql`
-* Run `npm run server` to start the server
-* Run `npm run client` to start the client
-* Navigate to `localhost:3000`
+[x]* Run `npm install`
+[x]* Start postgres if not running already by using `brew services start postgresql`
+[x]* Run `npm run server` to start the server
+[x]* Run `npm run client` to start the client
+[x]* Navigate to `localhost:3000`
 
 
 ## Base Features
 
 You will need 2 views for the Base Features. You should put some thought into the UI and how to style it.
-
 
 ### Search View
 
@@ -39,8 +38,8 @@ You will need 2 views for the Base Features. You should put some thought into th
 
 - Allow a user to see all of the Giphy images they have Favorited. The actual images need to appear on the DOM.
 - Allow a user to set a category for a favorite image.
-    - Each favorite image can only have 1 category at a time.
-    - The category needs to be one of the categories in the database.
+- Each favorite image can only have 1 category at a time.
+- The category needs to be one of the categories in the database.
 
 
 ## Existing Routes

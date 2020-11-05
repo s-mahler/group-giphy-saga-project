@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
+import axios from 'axios';
 
 const gifReducer = (state={}, action) => {
     switch(action.type) {
@@ -22,7 +23,7 @@ function* watcherSaga() {
 
 function* fetchGifs() {
     try {
-      const gifsResponse = yield Axios.get('/api/favorite');
+      const gifsResponse = yield axios.get('/api/favorite');
       console.log(gifsResponse.data);
       yield put({type: 'SET_GIF', payload: gifsResponse.data});
     } catch (error) {
@@ -30,7 +31,7 @@ function* fetchGifs() {
     }
   }
 
-const sagaMiddleware = createSagaMiddleware
+const sagaMiddleware = createSagaMiddleware();
 
 const storeInstance = createStore(
     combineReducers({gifReducer}),
