@@ -4,18 +4,39 @@ import { connect } from 'react-redux';
 
 class Search extends Component {
 
+    state = {
+        newSearch: ''
+    }
+
+    handleChange = event => {
+        console.log('event happended')
+        this.setState({
+            newSearch: {
+                ...this.state.newSearch,
+                newSearch: event.target.value,
+            }
+        });
+    }
+
+    addNewSearch = event => {
+        this.props.dispatch({type: 'FETCH_GIFS', payload: this.state.newSearch })
+    }
+
     render() {
         return (
     
-              <div>
-                  <p>Search</p>
-              </div>
+            <div>
+                <input type="text" onChange={this.handleChange}></input>
+                <button onClick={this.addNewSearch}>Search for a new GIF</button>
+            </div>
 
         );
     }
 
 }
 
+const mapReduxStateToProps = reduxState => ({
+  reduxState
+});
 
-
-export default connect()(Search);
+export default connect(mapReduxStateToProps)(Search);
