@@ -8,6 +8,10 @@ class Search extends Component {
         newSearch: ''
     }
 
+    componentDidMount = () => {
+        this.addNewSearch('test');
+    }
+
     handleChange = event => {
         console.log('event happended')
         this.setState({
@@ -28,6 +32,11 @@ class Search extends Component {
             <div>
                 <input type="text" onChange={this.handleChange}></input>
                 <button onClick={this.addNewSearch}>Search for a new GIF</button>
+                <ul>
+                    {this.props.reduxState.gifReducer.map((gif, index) => {
+                        return <li key={index}><img alt={index} src={gif.images.preview_gif.url}/></li>;
+                    })}
+                </ul>
             </div>
 
         );

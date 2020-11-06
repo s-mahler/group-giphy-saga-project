@@ -8,7 +8,8 @@ import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
 
-const gifReducer = (state={}, action) => {
+const gifReducer = (state=[], action) => {
+    console.log(action.payload);
     switch(action.type) {
         case 'SET_GIF':
             return action.payload;
@@ -25,7 +26,7 @@ function* fetchGifs(action) {
     try {
       const gifsResponse = yield axios.get('/api/search', action.payload);
       console.log(gifsResponse.data);
-      yield put({type: 'SET_GIF', payload: gifsResponse.data});
+      yield put({type: 'SET_GIF', payload: gifsResponse.data.data});
     } catch (error) {
       alert(error);
     }
