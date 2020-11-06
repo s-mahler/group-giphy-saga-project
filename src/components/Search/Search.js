@@ -8,22 +8,22 @@ class Search extends Component {
         newSearch: ''
     }
 
-    componentDidMount = () => {
-        this.addNewSearch('test');
-    }
+    // componentDidMount = () => {
+    //     this.addNewSearch('test');
+    // }
 
     handleChange = event => {
         console.log('event happended')
         this.setState({
             newSearch: {
-                ...this.state.newSearch,
                 newSearch: event.target.value,
             }
         });
     }
 
-    addNewSearch = event => {
-        this.props.dispatch({type: 'FETCH_GIFS', payload: this.state.newSearch })
+    addNewSearch = () => {
+        console.log(this.state.newSearch);
+        this.props.dispatch({type: 'FETCH_GIFS', payload: this.state.newSearch });
     }
 
     render() {

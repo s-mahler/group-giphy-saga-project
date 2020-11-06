@@ -9,7 +9,6 @@ import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
 
 const gifReducer = (state=[], action) => {
-    console.log(action.payload);
     switch(action.type) {
         case 'SET_GIF':
             return action.payload;
@@ -23,9 +22,9 @@ function* watcherSaga() {
 }
 
 function* fetchGifs(action) {
+    console.log(action.payload.newSearch);
     try {
-      const gifsResponse = yield axios.get('/api/search', action.payload);
-      console.log(gifsResponse.data);
+      const gifsResponse = yield axios.get(`/api/search?search=${action.payload.newSearch}`);
       yield put({type: 'SET_GIF', payload: gifsResponse.data.data});
     } catch (error) {
       alert(error);
