@@ -17,8 +17,27 @@ const gifReducer = (state=[], action) => {
     }
 }
 
+const favReducer = (state=[], action) => {
+  switch(action.type) {
+    case 'SET_FAVORITE':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
 function* watcherSaga() {
-    yield takeEvery('FETCH_GIFS', fetchGifs)
+    yield takeEvery('FETCH_GIFS', fetchGifs);
+    yield takeEvery('ADD_FAVORITE', addFavorite);
+}
+
+function* addFavorite(action) {
+  console.log(action.payload)
+  try {
+    axios.post('api/favorite', action.payload);
+  } catch (error) {
+    console.log('error in post', error);
+  }
 }
 
 function* fetchGifs(action) {
@@ -34,7 +53,7 @@ function* fetchGifs(action) {
 const sagaMiddleware = createSagaMiddleware();
 
 const storeInstance = createStore(
-    combineReducers({gifReducer}),
+    combineReducers({gifReducer, favReducer}),
     applyMiddleware(logger, sagaMiddleware)
 )
 

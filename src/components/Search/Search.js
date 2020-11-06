@@ -26,6 +26,11 @@ class Search extends Component {
         this.props.dispatch({type: 'FETCH_GIFS', payload: this.state.newSearch });
     }
 
+    addFavorite = (gifUrl) => {
+        console.log('clicked');
+        this.props.dispatch({type: 'ADD_FAVORITE', payload: gifUrl});
+    }
+
     render() {
         return (
     
@@ -34,7 +39,7 @@ class Search extends Component {
                 <button onClick={this.addNewSearch}>Search for a new GIF</button>
                 <ul>
                     {this.props.reduxState.gifReducer.map((gif, index) => {
-                        return <li key={index}><img alt={index} src={gif.images.preview_gif.url}/></li>;
+                        return <li key={index}><img alt={index} src={gif.images.preview_gif.url}/><button onClick={() => this.addFavorite(gif.images.preview_gif.url)}>Favorite</button></li>;
                     })}
                 </ul>
             </div>
